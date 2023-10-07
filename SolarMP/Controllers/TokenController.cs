@@ -42,14 +42,18 @@ namespace SolarMP.Controllers
                 }
                 else
                 {
-                    var acc = await this._context.Account.Where(x=>x.Username.Equals(dto.Username) && x.Password.Equals(dto.Password))
+                    var acc = await this._context.Account.Where(x=>x.Username.Equals(dto.Username))
                         .FirstOrDefaultAsync();
                     if(acc == null)
                     {
-                        throw new Exception("login fail");
+                        throw new Exception("Không tồn tại người dùng");
                     }
                     else
                     {
+                        if (!(BCrypt.Net.BCrypt.Verify(dto.Password, acc.Password)))
+                        {
+                            throw new Exception("Mật khẩu không đúng!");
+                        }
                         var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

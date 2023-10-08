@@ -55,9 +55,15 @@ namespace SolarMP.Models
         [ForeignKey("Bracketid")]
         [InverseProperty("ConstructionContract")]
         public virtual Bracket Bracket { get; set; }
+        [ForeignKey("Customerid")]
+        [InverseProperty("ConstructionContractCustomer")]
+        public virtual Account Customer { get; set; }
         [ForeignKey("Packageid")]
         [InverseProperty("ConstructionContract")]
         public virtual Package Package { get; set; }
+        [ForeignKey("Staffid")]
+        [InverseProperty("ConstructionContractStaff")]
+        public virtual Account Staff { get; set; }
         [InverseProperty("Constructioncontract")]
         public virtual ICollection<Acceptance> Acceptance { get; set; }
         [InverseProperty("Constructioncontract")]

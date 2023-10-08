@@ -42,6 +42,9 @@ namespace SolarMP.Models
         [Column("datetime", TypeName = "datetime")]
         public DateTime? Datetime { get; set; }
 
+        [ForeignKey("AccountId")]
+        [InverseProperty("WarrantyReport")]
+        public virtual Account Account { get; set; }
         [ForeignKey("ContractId")]
         [InverseProperty("WarrantyReport")]
         public virtual ConstructionContract Contract { get; set; }

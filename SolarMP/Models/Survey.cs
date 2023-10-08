@@ -25,5 +25,9 @@ namespace SolarMP.Models
         [StringLength(16)]
         [Unicode(false)]
         public string Staffid { get; set; }
+
+        [ForeignKey("Staffid")]
+        [InverseProperty("Survey")]
+        public virtual Account Staff { get; set; }
     }
 }

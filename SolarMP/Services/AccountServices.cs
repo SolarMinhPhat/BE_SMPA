@@ -48,8 +48,24 @@ namespace SolarMP.Services
                 await this.context.SaveChangesAsync();
                 
                 return account;
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
+                if (ex.InnerException.Message.Contains("duplicate"))
+                {
+                    if (ex.InnerException.Message.Contains("Username"))
+                    {
+                        throw new Exception("Tên đăng nhập đã tồn tại");
+                    }
+                    if (ex.InnerException.Message.Contains("Email"))
+                    {
+                        throw new Exception("Email đã tồn tại");
+                    }
+                    if (ex.InnerException.Message.Contains("Phone"))
+                    {
+                        throw new Exception("Số điện thoại đã tồn tại");
+                    }
+                }
                 throw new Exception(ex.Message);
             }
         }

@@ -31,7 +31,7 @@ namespace SolarMP.Services
             try
             {
                 var account = new Account();
-                account.Accountid = "ACC"+Guid.NewGuid().ToString().Substring(0,7);
+                account.Accountid = "ACC"+Guid.NewGuid().ToString().Substring(0,13);
                 account.RoleId = "1" ?? dto.RoleId;
                 account.Phone = dto.Phone;
                 account.Email = dto.Email;
@@ -66,7 +66,7 @@ namespace SolarMP.Services
                         throw new Exception("Số điện thoại đã tồn tại");
                     }
                 }
-                throw new Exception(ex.Message);
+                throw new Exception("Lỗi đăng ký");
             }
         }
     }

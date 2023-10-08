@@ -32,6 +32,8 @@ namespace SolarMP.Models
         public DateTime? Enddate { get; set; }
         [Column("createAt", TypeName = "datetime")]
         public DateTime? CreateAt { get; set; }
+        [Column("status")]
+        public bool Status { get; set; }
 
         [InverseProperty("Promotion")]
         public virtual ICollection<Package> Package { get; set; }

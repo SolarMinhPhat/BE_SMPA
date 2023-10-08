@@ -25,6 +25,8 @@ namespace SolarMP.Models
         [StringLength(16)]
         [Unicode(false)]
         public string Staffid { get; set; }
+        [Column("status")]
+        public bool Status { get; set; }
 
         [ForeignKey("Staffid")]
         [InverseProperty("Survey")]

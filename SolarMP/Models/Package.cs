@@ -33,6 +33,8 @@ namespace SolarMP.Models
         [StringLength(16)]
         [Unicode(false)]
         public string Promotionid { get; set; }
+        [Column("status")]
+        public bool Status { get; set; }
 
         [ForeignKey("Promotionid")]
         [InverseProperty("Package")]

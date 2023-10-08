@@ -41,6 +41,9 @@ namespace SolarMP.Models
         [Unicode(false)]
         public string AccountId { get; set; }
 
+        [ForeignKey("AccountId")]
+        [InverseProperty("PaymentProcess")]
+        public virtual Account Account { get; set; }
         [ForeignKey("ConstructioncontractId")]
         [InverseProperty("PaymentProcess")]
         public virtual ConstructionContract Constructioncontract { get; set; }

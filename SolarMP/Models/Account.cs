@@ -10,18 +10,9 @@ namespace SolarMP.Models
 {
     public partial class Account
     {
-        public Account()
-        {
-            ConstructionContractCustomer = new HashSet<ConstructionContract>();
-            ConstructionContractStaff = new HashSet<ConstructionContract>();
-            PaymentProcess = new HashSet<PaymentProcess>();
-            Survey = new HashSet<Survey>();
-            WarrantyReport = new HashSet<WarrantyReport>();
-        }
-
         [Key]
         [Column("accountid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Accountid { get; set; }
         [Column("username")]
@@ -62,15 +53,5 @@ namespace SolarMP.Models
         [ForeignKey("RoleId")]
         [InverseProperty("Account")]
         public virtual Role Role { get; set; }
-        [InverseProperty("Customer")]
-        public virtual ICollection<ConstructionContract> ConstructionContractCustomer { get; set; }
-        [InverseProperty("Staff")]
-        public virtual ICollection<ConstructionContract> ConstructionContractStaff { get; set; }
-        [InverseProperty("Account")]
-        public virtual ICollection<PaymentProcess> PaymentProcess { get; set; }
-        [InverseProperty("Staff")]
-        public virtual ICollection<Survey> Survey { get; set; }
-        [InverseProperty("Account")]
-        public virtual ICollection<WarrantyReport> WarrantyReport { get; set; }
     }
 }

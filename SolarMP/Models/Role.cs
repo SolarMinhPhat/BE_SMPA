@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SolarMP.Models
 {
+    [Index("RoleName", Name = "IX_Role", IsUnique = true)]
     public partial class Role
     {
         public Role()

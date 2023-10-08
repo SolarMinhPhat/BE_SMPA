@@ -19,7 +19,11 @@ namespace SolarMP.Controllers
             this._service = Service;
         }
 
-        [Authorize]
+        /// <summary>
+        /// hiện h chỉ role 1 dc vào
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "1")]
         [Route("get-all")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -38,6 +42,15 @@ namespace SolarMP.Controllers
             }
         }
 
+        /// <summary>
+        /// role 1: admin
+        /// role 2: owner
+        /// role 3: staff
+        /// role 4: customer
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns>
+        /// </returns>
         [AllowAnonymous]
         [Route("register")]
         [HttpPost]

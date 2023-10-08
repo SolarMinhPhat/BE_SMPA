@@ -17,7 +17,7 @@ namespace SolarMP.Models
 
         [Key]
         [Column("promotionid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Promotionid { get; set; }
         [Column("amount", TypeName = "decimal(18, 0)")]

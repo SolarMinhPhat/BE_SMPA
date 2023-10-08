@@ -17,7 +17,7 @@ namespace SolarMP.Models
 
         [Key]
         [Column("processId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ProcessId { get; set; }
         [Required]
@@ -37,7 +37,7 @@ namespace SolarMP.Models
         public DateTime CreateAt { get; set; }
         [Required]
         [Column("contractId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ContractId { get; set; }
 

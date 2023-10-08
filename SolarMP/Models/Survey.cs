@@ -12,7 +12,7 @@ namespace SolarMP.Models
     {
         [Key]
         [Column("surveyid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Surveyid { get; set; }
         [Column("description")]
@@ -22,12 +22,8 @@ namespace SolarMP.Models
         [Column("note", TypeName = "text")]
         public string Note { get; set; }
         [Column("staffid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Staffid { get; set; }
-
-        [ForeignKey("Staffid")]
-        [InverseProperty("Survey")]
-        public virtual Account Staff { get; set; }
     }
 }

@@ -12,26 +12,26 @@ namespace SolarMP.Models
     {
         [Key]
         [Column("imageid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Imageid { get; set; }
         [Required]
         [Column("image_data")]
         public string ImageData { get; set; }
         [Column("productId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ProductId { get; set; }
         [Column("processId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ProcessId { get; set; }
         [Column("bracketId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string BracketId { get; set; }
         [Column("warrantyReportId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string WarrantyReportId { get; set; }
 

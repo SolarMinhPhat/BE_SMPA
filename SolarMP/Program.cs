@@ -37,7 +37,8 @@ builder.Services.AddSwaggerGen(option =>
     var xmlCommentFileFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
 
     option.IncludeXmlComments(xmlCommentFileFullPath);
-
+    
+    //set up jwt token authorize
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,

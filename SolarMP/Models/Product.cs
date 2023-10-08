@@ -19,7 +19,7 @@ namespace SolarMP.Models
 
         [Key]
         [Column("productId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ProductId { get; set; }
         [Column("name")]

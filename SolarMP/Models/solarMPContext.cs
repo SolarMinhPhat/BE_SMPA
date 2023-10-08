@@ -38,9 +38,7 @@ namespace SolarMP.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // local 
                 optionsBuilder.UseSqlServer("Data Source=LAPTOP-8LC85HGU\\SQLEXPRESS;Initial Catalog=solarMP;Persist Security Info=True;User ID=sa;Password=12");
-                // sau này server thì để dưới này
             }
         }
 
@@ -56,6 +54,10 @@ namespace SolarMP.Models
 
             modelBuilder.Entity<Account>(entity =>
             {
+                entity.HasIndex(e => e.Username, "Username")
+                    .IsUnique()
+                    .HasFilter("([username] IS NOT NULL)");
+
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Account)
                     .HasForeignKey(d => d.RoleId)
@@ -70,20 +72,10 @@ namespace SolarMP.Models
                     .HasForeignKey(d => d.Bracketid)
                     .HasConstraintName("FK__Construct__brack__5629CD9C");
 
-                entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.ConstructionContractCustomer)
-                    .HasForeignKey(d => d.Customerid)
-                    .HasConstraintName("FK_ConstructionContract_Account1");
-
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.ConstructionContract)
                     .HasForeignKey(d => d.Packageid)
                     .HasConstraintName("FK__Construct__packa__5441852A");
-
-                entity.HasOne(d => d.Staff)
-                    .WithMany(p => p.ConstructionContractStaff)
-                    .HasForeignKey(d => d.Staffid)
-                    .HasConstraintName("FK_ConstructionContract_Account");
             });
 
             modelBuilder.Entity<Image>(entity =>
@@ -139,12 +131,6 @@ namespace SolarMP.Models
                 entity.HasKey(e => e.Paymentid)
                     .HasName("PK__PaymentP__AF26EBEEE740B76B");
 
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.PaymentProcess)
-                    .HasForeignKey(d => d.AccountId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PaymentProcess_Account");
-
                 entity.HasOne(d => d.Constructioncontract)
                     .WithMany(p => p.PaymentProcess)
                     .HasForeignKey(d => d.ConstructioncontractId)
@@ -177,23 +163,10 @@ namespace SolarMP.Models
                     .HasConstraintName("FK__ProductWa__warra__628FA481");
             });
 
-            modelBuilder.Entity<Survey>(entity =>
-            {
-                entity.HasOne(d => d.Staff)
-                    .WithMany(p => p.Survey)
-                    .HasForeignKey(d => d.Staffid)
-                    .HasConstraintName("FK_Survey_Account");
-            });
-
             modelBuilder.Entity<WarrantyReport>(entity =>
             {
                 entity.HasKey(e => e.Warrantyid)
                     .HasName("PK__Warranty__05ACB4E9DB04664C");
-
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.WarrantyReport)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("FK_WarrantyReport_Account");
 
                 entity.HasOne(d => d.Contract)
                     .WithMany(p => p.WarrantyReport)

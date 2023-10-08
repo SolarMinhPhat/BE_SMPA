@@ -18,7 +18,7 @@ namespace SolarMP.Models
 
         [Key]
         [Column("packageId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string PackageId { get; set; }
         [Column("name")]
@@ -30,7 +30,7 @@ namespace SolarMP.Models
         [Column("price", TypeName = "decimal(10, 2)")]
         public decimal? Price { get; set; }
         [Column("promotionid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Promotionid { get; set; }
 

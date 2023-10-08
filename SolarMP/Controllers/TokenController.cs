@@ -42,7 +42,9 @@ namespace SolarMP.Controllers
                 }
                 else
                 {
+                    // kiểm tra tài khoản
                     var acc = await this._context.Account.Where(x=>x.Username.Equals(dto.Username))
+                        .Include(x=>x.Role)
                         .FirstOrDefaultAsync();
                     if(acc == null)
                     {
@@ -50,10 +52,13 @@ namespace SolarMP.Controllers
                     }
                     else
                     {
+                        // kiểm tra mật khẩu
                         if (!(BCrypt.Net.BCrypt.Verify(dto.Password, acc.Password)))
                         {
                             throw new Exception("Mật khẩu không đúng!");
                         }
+
+                        // jwt token gen
                         var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -62,7 +67,8 @@ namespace SolarMP.Controllers
                         new Claim("DisplayName", acc.Firstname),
                         new Claim("Username", acc.Username.ToString()),
                         new Claim("Email", acc.Email),
-                        new Claim("Password", acc.Password)
+                        new Claim("Password", acc.Password),
+                        new Claim(ClaimTypes.Role, acc.Role.RoleId.ToString())
                         };
 
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

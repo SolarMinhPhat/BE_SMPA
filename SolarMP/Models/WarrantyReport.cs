@@ -18,7 +18,7 @@ namespace SolarMP.Models
 
         [Key]
         [Column("warrantyid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Warrantyid { get; set; }
         [Column("manufacturer")]
@@ -30,21 +30,18 @@ namespace SolarMP.Models
         [Column("description", TypeName = "text")]
         public string Description { get; set; }
         [Column("contractId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ContractId { get; set; }
         [Column("status")]
         public bool Status { get; set; }
         [Column("accountId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string AccountId { get; set; }
         [Column("datetime", TypeName = "datetime")]
         public DateTime? Datetime { get; set; }
 
-        [ForeignKey("AccountId")]
-        [InverseProperty("WarrantyReport")]
-        public virtual Account Account { get; set; }
         [ForeignKey("ContractId")]
         [InverseProperty("WarrantyReport")]
         public virtual ConstructionContract Contract { get; set; }

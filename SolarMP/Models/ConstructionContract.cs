@@ -20,7 +20,7 @@ namespace SolarMP.Models
 
         [Key]
         [Column("constructioncontractID")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ConstructioncontractId { get; set; }
         [Column("status")]
@@ -36,34 +36,28 @@ namespace SolarMP.Models
         [Column("imageFile")]
         public byte[] ImageFile { get; set; }
         [Column("customerid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Customerid { get; set; }
         [Column("staffid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Staffid { get; set; }
         [Column("packageid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Packageid { get; set; }
         [Column("bracketid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Bracketid { get; set; }
 
         [ForeignKey("Bracketid")]
         [InverseProperty("ConstructionContract")]
         public virtual Bracket Bracket { get; set; }
-        [ForeignKey("Customerid")]
-        [InverseProperty("ConstructionContractCustomer")]
-        public virtual Account Customer { get; set; }
         [ForeignKey("Packageid")]
         [InverseProperty("ConstructionContract")]
         public virtual Package Package { get; set; }
-        [ForeignKey("Staffid")]
-        [InverseProperty("ConstructionContractStaff")]
-        public virtual Account Staff { get; set; }
         [InverseProperty("Constructioncontract")]
         public virtual ICollection<Acceptance> Acceptance { get; set; }
         [InverseProperty("Constructioncontract")]

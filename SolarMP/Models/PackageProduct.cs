@@ -12,12 +12,12 @@ namespace SolarMP.Models
     {
         [Key]
         [Column("productId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ProductId { get; set; }
         [Key]
         [Column("packageId")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string PackageId { get; set; }
         [Column("status")]

@@ -12,12 +12,12 @@ namespace SolarMP.Models
     {
         [Key]
         [Column("productid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Productid { get; set; }
         [Key]
         [Column("warrantyid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Warrantyid { get; set; }
         [Column(TypeName = "decimal(10, 2)")]

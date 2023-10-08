@@ -12,7 +12,7 @@ namespace SolarMP.Models
     {
         [Key]
         [Column("acceptanceid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Acceptanceid { get; set; }
         [Column("status")]
@@ -22,7 +22,7 @@ namespace SolarMP.Models
         [Column("feedback", TypeName = "text")]
         public string Feedback { get; set; }
         [Column("constructioncontractid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Constructioncontractid { get; set; }
         [Column("imageFile")]

@@ -12,13 +12,13 @@ namespace SolarMP.Models
     {
         [Key]
         [Column("paymentid")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string Paymentid { get; set; }
         [Column("amount", TypeName = "decimal(18, 0)")]
         public decimal Amount { get; set; }
         [Column("constructioncontractID")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string ConstructioncontractId { get; set; }
         [Required]
@@ -37,13 +37,10 @@ namespace SolarMP.Models
         public bool IsDeposit { get; set; }
         [Required]
         [Column("accountID")]
-        [StringLength(10)]
+        [StringLength(16)]
         [Unicode(false)]
         public string AccountId { get; set; }
 
-        [ForeignKey("AccountId")]
-        [InverseProperty("PaymentProcess")]
-        public virtual Account Account { get; set; }
         [ForeignKey("ConstructioncontractId")]
         [InverseProperty("PaymentProcess")]
         public virtual ConstructionContract Constructioncontract { get; set; }

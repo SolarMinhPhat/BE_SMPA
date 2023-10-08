@@ -36,6 +36,8 @@ namespace SolarMP.Models
         public string Feature { get; set; }
         [Column("warrantyDate", TypeName = "date")]
         public DateTime? WarrantyDate { get; set; }
+        [Column("status")]
+        public bool Status { get; set; }
 
         [InverseProperty("Product")]
         public virtual ICollection<Image> Image { get; set; }

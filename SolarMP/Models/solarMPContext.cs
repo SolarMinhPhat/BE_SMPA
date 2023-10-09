@@ -47,18 +47,14 @@ namespace SolarMP.Models
         {
             modelBuilder.Entity<Acceptance>(entity =>
             {
-                entity.HasOne(d => d.Constructioncontract)
+                entity.HasOne(d => d.ConstructionContract)
                     .WithMany(p => p.Acceptance)
-                    .HasForeignKey(d => d.Constructioncontractid)
+                    .HasForeignKey(d => d.ConstructionContractId)
                     .HasConstraintName("FK__Acceptanc__const__5165187F");
             });
 
             modelBuilder.Entity<Account>(entity =>
             {
-                entity.HasIndex(e => e.Username, "Username")
-                    .IsUnique()
-                    .HasFilter("([username] IS NOT NULL)");
-
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Account)
                     .HasForeignKey(d => d.RoleId)
@@ -70,17 +66,17 @@ namespace SolarMP.Models
             {
                 entity.HasOne(d => d.Bracket)
                     .WithMany(p => p.ConstructionContract)
-                    .HasForeignKey(d => d.Bracketid)
+                    .HasForeignKey(d => d.BracketId)
                     .HasConstraintName("FK__Construct__brack__5629CD9C");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.ConstructionContractCustomer)
-                    .HasForeignKey(d => d.Customerid)
+                    .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("FK_ConstructionContract_Account1");
 
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.ConstructionContract)
-                    .HasForeignKey(d => d.Packageid)
+                    .HasForeignKey(d => d.PackageId)
                     .HasConstraintName("FK__Construct__packa__5441852A");
 
                 entity.HasOne(d => d.Staff)
@@ -116,7 +112,7 @@ namespace SolarMP.Models
             {
                 entity.HasOne(d => d.Promotion)
                     .WithMany(p => p.Package)
-                    .HasForeignKey(d => d.Promotionid)
+                    .HasForeignKey(d => d.PromotionId)
                     .HasConstraintName("FK__Package__promoti__5DCAEF64");
             });
 
@@ -139,7 +135,7 @@ namespace SolarMP.Models
 
             modelBuilder.Entity<PaymentProcess>(entity =>
             {
-                entity.HasKey(e => e.Paymentid)
+                entity.HasKey(e => e.PaymentId)
                     .HasName("PK__PaymentP__AF26EBEEE740B76B");
 
                 entity.HasOne(d => d.Account)
@@ -148,9 +144,9 @@ namespace SolarMP.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PaymentProcess_Account");
 
-                entity.HasOne(d => d.Constructioncontract)
+                entity.HasOne(d => d.ConstructionContract)
                     .WithMany(p => p.PaymentProcess)
-                    .HasForeignKey(d => d.ConstructioncontractId)
+                    .HasForeignKey(d => d.ConstructionContractId)
                     .HasConstraintName("FK__PaymentPr__const__5EBF139D");
             });
 
@@ -165,17 +161,17 @@ namespace SolarMP.Models
 
             modelBuilder.Entity<ProductWarrantyReport>(entity =>
             {
-                entity.HasKey(e => new { e.Productid, e.Warrantyid });
+                entity.HasKey(e => new { e.ProductId, e.WarrantyId });
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductWarrantyReport)
-                    .HasForeignKey(d => d.Productid)
+                    .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__ProductWa__produ__6B24EA82");
 
                 entity.HasOne(d => d.Warranty)
                     .WithMany(p => p.ProductWarrantyReport)
-                    .HasForeignKey(d => d.Warrantyid)
+                    .HasForeignKey(d => d.WarrantyId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__ProductWa__warra__628FA481");
             });
@@ -184,13 +180,13 @@ namespace SolarMP.Models
             {
                 entity.HasOne(d => d.Staff)
                     .WithMany(p => p.Survey)
-                    .HasForeignKey(d => d.Staffid)
+                    .HasForeignKey(d => d.StaffId)
                     .HasConstraintName("FK_Survey_Account");
             });
 
             modelBuilder.Entity<WarrantyReport>(entity =>
             {
-                entity.HasKey(e => e.Warrantyid)
+                entity.HasKey(e => e.WarrantyId)
                     .HasName("PK__Warranty__05ACB4E9DB04664C");
 
                 entity.HasOne(d => d.Account)

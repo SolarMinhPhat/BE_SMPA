@@ -11,25 +11,25 @@ namespace SolarMP.Models
     public partial class Acceptance
     {
         [Key]
-        [Column("acceptanceid")]
+        [Column("acceptanceId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Acceptanceid { get; set; }
+        public string AcceptanceId { get; set; }
         [Column("status")]
         public bool? Status { get; set; }
         [Column("rating")]
         public int? Rating { get; set; }
         [Column("feedback", TypeName = "text")]
         public string Feedback { get; set; }
-        [Column("constructioncontractid")]
+        [Column("constructionContractId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Constructioncontractid { get; set; }
+        public string ConstructionContractId { get; set; }
         [Column("imageFile")]
         public byte[] ImageFile { get; set; }
 
-        [ForeignKey("Constructioncontractid")]
+        [ForeignKey("ConstructionContractId")]
         [InverseProperty("Acceptance")]
-        public virtual ConstructionContract Constructioncontract { get; set; }
+        public virtual ConstructionContract ConstructionContract { get; set; }
     }
 }

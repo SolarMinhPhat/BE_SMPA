@@ -20,10 +20,10 @@ namespace SolarMP.Models
         }
 
         [Key]
-        [Column("accountid")]
+        [Column("accountId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Accountid { get; set; }
+        public string AccountId { get; set; }
         [Column("username")]
         [StringLength(255)]
         [Unicode(false)]

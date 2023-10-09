@@ -16,20 +16,20 @@ namespace SolarMP.Models
         }
 
         [Key]
-        [Column("promotionid")]
+        [Column("promotionId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Promotionid { get; set; }
+        public string PromotionId { get; set; }
         [Column("amount", TypeName = "decimal(18, 0)")]
         public decimal? Amount { get; set; }
         [Column("title")]
         public string Title { get; set; }
         [Column("description")]
         public string Description { get; set; }
-        [Column("startdate", TypeName = "datetime")]
-        public DateTime? Startdate { get; set; }
-        [Column("enddate", TypeName = "datetime")]
-        public DateTime? Enddate { get; set; }
+        [Column("startDate", TypeName = "datetime")]
+        public DateTime? StartDate { get; set; }
+        [Column("endDate", TypeName = "datetime")]
+        public DateTime? EndDate { get; set; }
         [Column("createAt", TypeName = "datetime")]
         public DateTime? CreateAt { get; set; }
         [Column("status")]

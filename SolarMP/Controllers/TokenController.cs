@@ -63,7 +63,7 @@ namespace SolarMP.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", acc.Accountid.ToString()),
+                        new Claim("UserId", acc.AccountId.ToString()),
                         new Claim("DisplayName", acc.Firstname),
                         new Claim("Username", acc.Username.ToString()),
                         new Claim("Email", acc.Email),

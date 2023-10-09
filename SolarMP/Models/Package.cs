@@ -29,14 +29,14 @@ namespace SolarMP.Models
         public string Description { get; set; }
         [Column("price", TypeName = "decimal(10, 2)")]
         public decimal? Price { get; set; }
-        [Column("promotionid")]
+        [Column("promotionId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Promotionid { get; set; }
+        public string PromotionId { get; set; }
         [Column("status")]
         public bool Status { get; set; }
 
-        [ForeignKey("Promotionid")]
+        [ForeignKey("PromotionId")]
         [InverseProperty("Package")]
         public virtual Promotion Promotion { get; set; }
         [InverseProperty("Package")]

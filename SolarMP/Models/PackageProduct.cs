@@ -22,6 +22,8 @@ namespace SolarMP.Models
         public string PackageId { get; set; }
         [Column("status")]
         public bool Status { get; set; }
+        [Column("quantity")]
+        public int? Quantity { get; set; }
 
         [ForeignKey("PackageId")]
         [InverseProperty("PackageProduct")]

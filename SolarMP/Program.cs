@@ -19,6 +19,8 @@ builder.Services.AddSwaggerGen();
 
 // add scope data here
 builder.Services.AddScoped<IAccount, AccountServices>();
+builder.Services.AddScoped<IProduct, ProductServices>();
+builder.Services.AddScoped<IPackage, PackageServices>();
 
 
 // add dbcontext and handler cycles and tracking data

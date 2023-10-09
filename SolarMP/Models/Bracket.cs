@@ -17,10 +17,10 @@ namespace SolarMP.Models
         }
 
         [Key]
-        [Column("bracketid")]
+        [Column("bracketId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Bracketid { get; set; }
+        public string BracketId { get; set; }
         [Column("name")]
         [StringLength(255)]
         [Unicode(false)]

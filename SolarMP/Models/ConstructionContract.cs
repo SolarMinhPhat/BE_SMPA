@@ -19,7 +19,7 @@ namespace SolarMP.Models
         }
 
         [Key]
-        [Column("constructioncontractID")]
+        [Column("constructioncontractId")]
         [StringLength(16)]
         [Unicode(false)]
         public string ConstructioncontractId { get; set; }
@@ -35,38 +35,38 @@ namespace SolarMP.Models
         public bool? IsConfirmed { get; set; }
         [Column("imageFile")]
         public byte[] ImageFile { get; set; }
-        [Column("customerid")]
+        [Column("customerId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Customerid { get; set; }
+        public string CustomerId { get; set; }
         [Column("staffid")]
         [StringLength(16)]
         [Unicode(false)]
         public string Staffid { get; set; }
-        [Column("packageid")]
+        [Column("packageId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Packageid { get; set; }
-        [Column("bracketid")]
+        public string PackageId { get; set; }
+        [Column("bracketId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Bracketid { get; set; }
+        public string BracketId { get; set; }
 
-        [ForeignKey("Bracketid")]
+        [ForeignKey("BracketId")]
         [InverseProperty("ConstructionContract")]
         public virtual Bracket Bracket { get; set; }
-        [ForeignKey("Customerid")]
+        [ForeignKey("CustomerId")]
         [InverseProperty("ConstructionContractCustomer")]
         public virtual Account Customer { get; set; }
-        [ForeignKey("Packageid")]
+        [ForeignKey("PackageId")]
         [InverseProperty("ConstructionContract")]
         public virtual Package Package { get; set; }
         [ForeignKey("Staffid")]
         [InverseProperty("ConstructionContractStaff")]
         public virtual Account Staff { get; set; }
-        [InverseProperty("Constructioncontract")]
+        [InverseProperty("ConstructionContract")]
         public virtual ICollection<Acceptance> Acceptance { get; set; }
-        [InverseProperty("Constructioncontract")]
+        [InverseProperty("ConstructionContract")]
         public virtual ICollection<PaymentProcess> PaymentProcess { get; set; }
         [InverseProperty("Contract")]
         public virtual ICollection<Process> Process { get; set; }

@@ -11,16 +11,16 @@ namespace SolarMP.Models
     public partial class PaymentProcess
     {
         [Key]
-        [Column("paymentid")]
+        [Column("paymentId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Paymentid { get; set; }
+        public string PaymentId { get; set; }
         [Column("amount", TypeName = "decimal(18, 0)")]
         public decimal Amount { get; set; }
-        [Column("constructioncontractID")]
+        [Column("constructionContractId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string ConstructioncontractId { get; set; }
+        public string ConstructionContractId { get; set; }
         [Required]
         [Column("status")]
         [StringLength(50)]
@@ -36,7 +36,7 @@ namespace SolarMP.Models
         [Column("isDeposit")]
         public bool IsDeposit { get; set; }
         [Required]
-        [Column("accountID")]
+        [Column("accountId")]
         [StringLength(16)]
         [Unicode(false)]
         public string AccountId { get; set; }
@@ -44,8 +44,8 @@ namespace SolarMP.Models
         [ForeignKey("AccountId")]
         [InverseProperty("PaymentProcess")]
         public virtual Account Account { get; set; }
-        [ForeignKey("ConstructioncontractId")]
+        [ForeignKey("ConstructionContractId")]
         [InverseProperty("PaymentProcess")]
-        public virtual ConstructionContract Constructioncontract { get; set; }
+        public virtual ConstructionContract ConstructionContract { get; set; }
     }
 }

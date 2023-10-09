@@ -11,24 +11,24 @@ namespace SolarMP.Models
     public partial class ProductWarrantyReport
     {
         [Key]
-        [Column("productid")]
+        [Column("productId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Productid { get; set; }
+        public string ProductId { get; set; }
         [Key]
-        [Column("warrantyid")]
+        [Column("warrantyId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Warrantyid { get; set; }
-        [Column(TypeName = "decimal(10, 2)")]
+        public string WarrantyId { get; set; }
+        [Column("amountofDamageProduct", TypeName = "decimal(10, 2)")]
         public decimal? AmountofDamageProduct { get; set; }
         [Column("status")]
         public bool Status { get; set; }
 
-        [ForeignKey("Productid")]
+        [ForeignKey("ProductId")]
         [InverseProperty("ProductWarrantyReport")]
         public virtual Product Product { get; set; }
-        [ForeignKey("Warrantyid")]
+        [ForeignKey("WarrantyId")]
         [InverseProperty("ProductWarrantyReport")]
         public virtual WarrantyReport Warranty { get; set; }
     }

@@ -11,10 +11,10 @@ namespace SolarMP.Models
     public partial class Image
     {
         [Key]
-        [Column("imageid")]
+        [Column("imageId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Imageid { get; set; }
+        public string ImageId { get; set; }
         [Required]
         [Column("image_data")]
         public string ImageData { get; set; }

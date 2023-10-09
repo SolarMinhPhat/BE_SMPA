@@ -17,10 +17,10 @@ namespace SolarMP.Models
         }
 
         [Key]
-        [Column("warrantyid")]
+        [Column("warrantyId")]
         [StringLength(16)]
         [Unicode(false)]
-        public string Warrantyid { get; set; }
+        public string WarrantyId { get; set; }
         [Column("manufacturer")]
         [StringLength(255)]
         [Unicode(false)]
@@ -39,8 +39,8 @@ namespace SolarMP.Models
         [StringLength(16)]
         [Unicode(false)]
         public string AccountId { get; set; }
-        [Column("datetime", TypeName = "datetime")]
-        public DateTime? Datetime { get; set; }
+        [Column("dateTime", TypeName = "datetime")]
+        public DateTime? DateTime { get; set; }
 
         [ForeignKey("AccountId")]
         [InverseProperty("WarrantyReport")]

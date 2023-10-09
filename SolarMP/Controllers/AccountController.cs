@@ -20,10 +20,9 @@ namespace SolarMP.Controllers
         }
 
         /// <summary>
-        /// hiện h chỉ role 1 dc vào
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "1, 2")]
         [Route("get-all")]
         [HttpGet]
         public async Task<IActionResult> GetAll()

@@ -143,5 +143,47 @@ namespace SolarMP.Services
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<Product> update(ProductUpdateDTO dto)
+        {
+            try
+            {
+                var check = await this.context.Product.Where(x => x.ProductId.Equals(dto.ProductId)).FirstOrDefaultAsync();
+                if (check != null)
+                {
+                    var temp = check.Price;
+                    check.Name = dto.Name;
+                    check.Price = dto.Price;
+                    check.Feature = dto.Feature;
+                    check.Manufacturer = dto.Manufacturer;
+                    check.WarrantyDate= dto.WarrantyDate;
+                    check.Status = dto.Status;
+                    
+                    this.context.Product.Update(check);
+                    await this.context.SaveChangesAsync();
+
+                    var pckPro = await this.context.PackageProduct.Where(x=>x.ProductId.Equals(dto.ProductId)).ToListAsync();
+                    if (pckPro != null)
+                    {
+                        foreach(var p in pckPro)
+                        {
+                            var pck = await this.context.Package.Where(x=>x.PackageId.Equals(p.PackageId)).FirstOrDefaultAsync();
+                            pck.Price -= temp * p.Quantity;
+                            pck.Price += dto.Price * p.Quantity;
+                            this.context.Package.Update(pck);
+                            await this.context.SaveChangesAsync();
+                        }
+                    }
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("Không tìm thấy product");
+                }
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

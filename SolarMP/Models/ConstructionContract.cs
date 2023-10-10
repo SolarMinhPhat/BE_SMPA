@@ -34,7 +34,7 @@ namespace SolarMP.Models
         [Column("isConfirmed")]
         public bool? IsConfirmed { get; set; }
         [Column("imageFile")]
-        public byte[] ImageFile { get; set; }
+        public string ImageFile { get; set; }
         [Column("customerId")]
         [StringLength(16)]
         [Unicode(false)]

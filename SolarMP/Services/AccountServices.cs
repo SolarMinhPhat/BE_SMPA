@@ -12,6 +12,30 @@ namespace SolarMP.Services
         {
             this.context = context;
         }
+
+        public async Task<Account> delete(string id)
+        {
+            try
+            {
+                var check = await this.context.Account.Where(x => x.AccountId.Equals(id)).FirstOrDefaultAsync();
+                if (check != null)
+                {
+                    check.Status = false;
+                    this.context.Account.Update(check);
+                    await this.context.SaveChangesAsync();
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<Account>> getAll()
         {
             try
@@ -21,6 +45,45 @@ namespace SolarMP.Services
                     .ToListAsync();
                 return account;
             }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<Account> getById(string id)
+        {
+            try
+            {
+                var check = await this.context.Account.Where(x=>x.AccountId.Equals(id)).FirstOrDefaultAsync();
+                if (check != null)
+                {
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("not found");
+                }
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<Account>> getByName(string name)
+        {
+            try
+            {
+                var check = await this.context.Account.Where(x => x.Firstname.Contains(name) || x.Lastname.Contains(name)).ToListAsync();
+                if (check != null)
+                {
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("not found");
+                }
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -67,6 +130,33 @@ namespace SolarMP.Services
                     }
                 }
                 throw new Exception("Lỗi đăng ký");
+            }
+        }
+
+        public async Task<Account> update(AccountUpdateDTO dto)
+        {
+            try
+            {
+                var check = await this.context.Account.Where(x => x.AccountId.Equals(dto.AccountId)).FirstOrDefaultAsync();
+                if (check != null)
+                {
+                    check.Address = dto.Address;
+                    check.Gender = dto.Gender;
+                    check.Firstname= dto.Firstname;
+                    check.Lastname= dto.Lastname;
+                    check.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+                    this.context.Account.Update(check);
+                    this.context.SaveChangesAsync();
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }

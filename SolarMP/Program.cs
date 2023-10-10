@@ -24,6 +24,9 @@ builder.Services.AddScoped<IPromotion, PromotionService>();
 builder.Services.AddScoped<IAcceptance, AcceptanceServices>();
 builder.Services.AddScoped<IProduct, ProductServices>();
 builder.Services.AddScoped<IPackage, PackageServices>();
+builder.Services.AddScoped<ISurvey, SurveyServices>();
+builder.Services.AddScoped<IBracket, BracketServices>();
+builder.Services.AddScoped<IConstructionContract, ConstructionContractServices>();
 
 
 // add dbcontext and handler cycles and tracking data

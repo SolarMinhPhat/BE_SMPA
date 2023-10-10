@@ -24,7 +24,7 @@ namespace SolarMP.Models
         [Unicode(false)]
         public string ConstructioncontractId { get; set; }
         [Column("status")]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
         [Column("startdate", TypeName = "date")]
         public DateTime? Startdate { get; set; }
         [Column("enddate", TypeName = "date")]
@@ -34,7 +34,7 @@ namespace SolarMP.Models
         [Column("isConfirmed")]
         public bool? IsConfirmed { get; set; }
         [Column("imageFile")]
-        public byte[] ImageFile { get; set; }
+        public string ImageFile { get; set; }
         [Column("customerId")]
         [StringLength(16)]
         [Unicode(false)]

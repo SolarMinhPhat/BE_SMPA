@@ -22,6 +22,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAccount, AccountServices>();
 builder.Services.AddScoped<IPromotion, PromotionService>();
 builder.Services.AddScoped<IAcceptance, AcceptanceServices>();
+builder.Services.AddScoped<IProduct, ProductServices>();
+builder.Services.AddScoped<IPackage, PackageServices>();
+
 
 // add dbcontext and handler cycles and tracking data
 builder.Services.AddDbContext<solarMPContext>(option =>

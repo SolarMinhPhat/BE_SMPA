@@ -6,6 +6,7 @@ using SolarMP.DTOs;
 using SolarMP.Interfaces;
 using SolarMP.Models;
 using SolarMP.DTOs.Product;
+using System.Data;
 
 namespace SolarMP.Controllers
 {
@@ -101,6 +102,23 @@ namespace SolarMP.Controllers
             try
             {
                 responseAPI.Data = await this.service.insert(dto);
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
+
+        [Route("update-Product")]
+        [HttpPut]
+        public async Task<IActionResult> update(ProductUpdateDTO dto)
+        {
+            ResponseAPI<List<Product>> responseAPI = new ResponseAPI<List<Product>>();
+            try
+            {
+                responseAPI.Data = await this.service.update(dto);
                 return Ok(responseAPI);
             }
             catch (Exception ex)

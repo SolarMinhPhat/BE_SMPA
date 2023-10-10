@@ -7,5 +7,9 @@ namespace SolarMP.Interfaces
     {
         Task<List<Account>> getAll();
         Task<Account> register(AccountRegisterDTO dto);
+        Task<Account> delete(string id);
+        Task<List<Account>> getByName(string name);
+        Task<Account> getById(string id);
+        Task<Account> update(AccountUpdateDTO dto);
     }
 }

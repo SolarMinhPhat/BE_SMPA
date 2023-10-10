@@ -43,7 +43,7 @@ namespace SolarMP.Controllers
                 else
                 {
                     // kiểm tra tài khoản
-                    var acc = await this._context.Account.Where(x=>x.Username.Equals(dto.Username))
+                    var acc = await this._context.Account.Where(x=>x.Username.Equals(dto.Username) && x.Status)
                         .Include(x=>x.Role)
                         .FirstOrDefaultAsync();
                     if(acc == null)

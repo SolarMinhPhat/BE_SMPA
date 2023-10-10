@@ -12,5 +12,6 @@ namespace SolarMP.Interfaces
         Task<Product> delete(string id);
         Task<List<Product>> getByName(string name);
         Task<Product> getById(string id);
+        Task<Product> update(ProductUpdateDTO dto);
     }
 }

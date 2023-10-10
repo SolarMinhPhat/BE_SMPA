@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SolarMP.Interfaces;
@@ -19,6 +20,8 @@ builder.Services.AddSwaggerGen();
 
 // add scope data here
 builder.Services.AddScoped<IAccount, AccountServices>();
+builder.Services.AddScoped<IPromotion, PromotionService>();
+builder.Services.AddScoped<IAcceptance, AcceptanceServices>();
 builder.Services.AddScoped<IProduct, ProductServices>();
 builder.Services.AddScoped<IPackage, PackageServices>();
 

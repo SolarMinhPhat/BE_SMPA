@@ -75,11 +75,10 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "LAPTOP-8LC85HGU\\SQLEXPRESS.solarMP",
+   "UiHint": "DESKTOP-9R59LGC\\SQLEXPRESS03.solarMP",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
-   "UseDateOnlyTimeOnly": false,
    "UseDbContextSplitting": false,
    "UseFluentApiOnly": false,
    "UseHandleBars": false,

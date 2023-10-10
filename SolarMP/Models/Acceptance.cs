@@ -26,7 +26,7 @@ namespace SolarMP.Models
         [Unicode(false)]
         public string ConstructionContractId { get; set; }
         [Column("imageFile")]
-        public byte[] ImageFile { get; set; }
+        public string ImageFile { get; set; }
 
         [ForeignKey("ConstructionContractId")]
         [InverseProperty("Acceptance")]

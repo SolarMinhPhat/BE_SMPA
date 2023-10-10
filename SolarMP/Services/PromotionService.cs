@@ -96,7 +96,7 @@ namespace SolarMP.Services
                 Promotion promotion = await this.context.Promotion.FirstAsync(x => x.PromotionId == upPromotion.PromotionId);
                 if (promotion != null)
                 {
-                    promotion.PromotionId = upPromotion.PromotionId;
+                    
                     promotion.Amount = upPromotion.Amount;
                     promotion.Title = upPromotion.Title;
                     promotion.Description = upPromotion.Description;

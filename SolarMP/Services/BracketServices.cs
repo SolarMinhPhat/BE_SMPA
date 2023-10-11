@@ -42,6 +42,7 @@ namespace SolarMP.Services
             try
             {
                 var data = await this.context.Bracket.Where(x => x.Status)
+                    .Include(x => x.Image)
                     .ToListAsync();
                 return data;
             }
@@ -55,7 +56,9 @@ namespace SolarMP.Services
         {
             try
             {
-                var data = await this.context.Bracket.Where(x => x.Status && x.BracketId.Equals(bracketId)).ToListAsync();
+                var data = await this.context.Bracket.Where(x => x.Status && x.BracketId.Equals(bracketId))
+                    .Include(x => x.Image)
+                    .ToListAsync();
                 if (data.Count > 0 && data != null)
                     return data;
                 else throw new ArgumentException();

@@ -24,7 +24,7 @@ namespace SolarMP.Models
         [Unicode(false)]
         public string ConstructioncontractId { get; set; }
         [Column("status")]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
         [Column("startdate", TypeName = "date")]
         public DateTime? Startdate { get; set; }
         [Column("enddate", TypeName = "date")]

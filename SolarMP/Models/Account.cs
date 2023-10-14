@@ -15,6 +15,7 @@ namespace SolarMP.Models
             ConstructionContractCustomer = new HashSet<ConstructionContract>();
             ConstructionContractStaff = new HashSet<ConstructionContract>();
             PaymentProcess = new HashSet<PaymentProcess>();
+            Request = new HashSet<Request>();
             Survey = new HashSet<Survey>();
             WarrantyReport = new HashSet<WarrantyReport>();
         }
@@ -58,6 +59,8 @@ namespace SolarMP.Models
         public DateTime CreateAt { get; set; }
         [Column("gender")]
         public bool Gender { get; set; }
+        [Column("isGoogleProvider")]
+        public bool IsGoogleProvider { get; set; }
 
         [ForeignKey("RoleId")]
         [InverseProperty("Account")]
@@ -68,6 +71,8 @@ namespace SolarMP.Models
         public virtual ICollection<ConstructionContract> ConstructionContractStaff { get; set; }
         [InverseProperty("Account")]
         public virtual ICollection<PaymentProcess> PaymentProcess { get; set; }
+        [InverseProperty("Account")]
+        public virtual ICollection<Request> Request { get; set; }
         [InverseProperty("Staff")]
         public virtual ICollection<Survey> Survey { get; set; }
         [InverseProperty("Account")]

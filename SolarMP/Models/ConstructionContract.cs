@@ -29,7 +29,7 @@ namespace SolarMP.Models
         public DateTime? Startdate { get; set; }
         [Column("enddate", TypeName = "date")]
         public DateTime? Enddate { get; set; }
-        [Column("totalcost", TypeName = "decimal(10, 2)")]
+        [Column("totalcost", TypeName = "decimal(16, 0)")]
         public decimal? Totalcost { get; set; }
         [Column("isConfirmed")]
         public bool? IsConfirmed { get; set; }

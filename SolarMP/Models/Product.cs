@@ -26,7 +26,7 @@ namespace SolarMP.Models
         [StringLength(255)]
         [Unicode(false)]
         public string Name { get; set; }
-        [Column("price", TypeName = "decimal(10, 2)")]
+        [Column("price", TypeName = "decimal(16, 0)")]
         public decimal? Price { get; set; }
         [Column("manufacturer")]
         [StringLength(100)]

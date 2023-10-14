@@ -30,6 +30,7 @@ namespace SolarMP.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductWarrantyReport> ProductWarrantyReport { get; set; }
         public virtual DbSet<Promotion> Promotion { get; set; }
+        public virtual DbSet<Request> Request { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Survey> Survey { get; set; }
         public virtual DbSet<WarrantyReport> WarrantyReport { get; set; }
@@ -174,6 +175,21 @@ namespace SolarMP.Models
                     .HasForeignKey(d => d.WarrantyId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__ProductWa__warra__628FA481");
+            });
+
+            modelBuilder.Entity<Request>(entity =>
+            {
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Request)
+                    .HasForeignKey(d => d.AccountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Request_Account");
+
+                entity.HasOne(d => d.Package)
+                    .WithMany(p => p.Request)
+                    .HasForeignKey(d => d.PackageId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Request_Package");
             });
 
             modelBuilder.Entity<Survey>(entity =>

@@ -30,6 +30,7 @@ builder.Services.AddScoped<IBracket, BracketServices>();
 builder.Services.AddScoped<IConstructionContract, ConstructionContractServices>();
 builder.Services.AddScoped<IWarrantyReport, WarrantyServices>();
 builder.Services.AddScoped<IPayment, PaymentServices>();
+builder.Services.AddScoped<IRequest, RequestServices>();
 
 
 

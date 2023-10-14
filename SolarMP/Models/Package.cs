@@ -14,6 +14,7 @@ namespace SolarMP.Models
         {
             ConstructionContract = new HashSet<ConstructionContract>();
             PackageProduct = new HashSet<PackageProduct>();
+            Request = new HashSet<Request>();
         }
 
         [Key]
@@ -43,5 +44,7 @@ namespace SolarMP.Models
         public virtual ICollection<ConstructionContract> ConstructionContract { get; set; }
         [InverseProperty("Package")]
         public virtual ICollection<PackageProduct> PackageProduct { get; set; }
+        [InverseProperty("Package")]
+        public virtual ICollection<Request> Request { get; set; }
     }
 }

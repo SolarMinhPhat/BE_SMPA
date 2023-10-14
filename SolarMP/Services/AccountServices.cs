@@ -106,6 +106,7 @@ namespace SolarMP.Services
                 account.Lastname = dto.Lastname;
                 account.Status = true;
                 account.CreateAt = DateTime.Now;
+                account.IsGoogleProvider = dto.IsGoogleProvider;
 
                 await this.context.Account.AddAsync(account);
                 await this.context.SaveChangesAsync();
@@ -145,6 +146,7 @@ namespace SolarMP.Services
                     check.Firstname= dto.Firstname;
                     check.Lastname= dto.Lastname;
                     check.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+                    check.IsGoogleProvider = dto.IsGoogleProvider;
                     this.context.Account.Update(check);
                     this.context.SaveChangesAsync();
                     return check;

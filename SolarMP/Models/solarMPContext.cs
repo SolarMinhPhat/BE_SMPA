@@ -39,8 +39,10 @@ namespace SolarMP.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-8LC85HGU\\SQLEXPRESS;Initial Catalog=solarMP;Persist Security Info=True;User ID=sa;Password=12");
+                // server
+                optionsBuilder.UseSqlServer("Data Source=solarcapstone.database.windows.net;Initial Catalog=solarMP;Persist Security Info=True;User ID=SMPAK141007;Password=S@lar123456789");
+                // local
+                //optionsBuilder.UseSqlServer("Data Source=LAPTOP-8LC85HGU\\SQLEXPRESS;Initial Catalog=solarMP;Persist Security Info=True;User ID=sa;Password=12");
             }
         }
 

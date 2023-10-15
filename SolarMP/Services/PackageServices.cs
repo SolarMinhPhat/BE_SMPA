@@ -36,7 +36,11 @@ namespace SolarMP.Services
         {
             try
             {
-                var check = await this.context.Package.Where(x => x.Status).ToListAsync();
+                var check = await this.context.Package.Where(x => x.Status)
+                    .Include(x=>x.PackageProduct)
+                        .ThenInclude(x=>x.Product)
+                            .ThenInclude(x=>x.Image)
+                    .ToListAsync();
                 if (check != null)
                 {
                     return check;

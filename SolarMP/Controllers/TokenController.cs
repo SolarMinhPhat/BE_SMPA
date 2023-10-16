@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SolarMP.DTOs;
+using SolarMP.DTOs.Account;
 using SolarMP.DTOs.JWT;
 using SolarMP.Models;
 using System.IdentityModel.Tokens.Jwt;
@@ -81,7 +82,10 @@ namespace SolarMP.Controllers
                         expires: DateTime.UtcNow.AddMinutes(30),
                         signingCredentials: signIn);
 
-                        return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                        var result = new JWTRespone();
+                        result.user = acc;
+                        result.token = new JwtSecurityTokenHandler().WriteToken(token);
+                        return Ok(result);
 
                     }
                 }

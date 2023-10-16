@@ -94,6 +94,7 @@ namespace SolarMP.Controllers
             try
             {
                 responseAPI.Data = await this._service.register(dto);
+                responseAPI.Message = "success";
                 return Ok(responseAPI);
             }
             catch (Exception ex)

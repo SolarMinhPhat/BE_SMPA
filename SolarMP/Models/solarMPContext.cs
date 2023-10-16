@@ -58,6 +58,18 @@ namespace SolarMP.Models
 
             modelBuilder.Entity<Account>(entity =>
             {
+                entity.HasIndex(e => e.Username, "User")
+                    .IsUnique()
+                    .HasFilter("([username] IS NOT NULL)");
+
+                entity.HasIndex(e => e.Email, "email")
+                    .IsUnique()
+                    .HasFilter("([email] IS NOT NULL)");
+
+                entity.HasIndex(e => e.Phone, "phone")
+                    .IsUnique()
+                    .HasFilter("([phone] IS NOT NULL)");
+
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Account)
                     .HasForeignKey(d => d.RoleId)

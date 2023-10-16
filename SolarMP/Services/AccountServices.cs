@@ -117,15 +117,15 @@ namespace SolarMP.Services
             {
                 if (ex.InnerException.Message.Contains("duplicate"))
                 {
-                    if (ex.InnerException.Message.Contains("Username"))
+                    if (ex.InnerException.Message.Contains("User"))
                     {
                         throw new Exception("Tên đăng nhập đã tồn tại");
                     }
-                    if (ex.InnerException.Message.Contains("Email"))
+                    if (ex.InnerException.Message.Contains("email"))
                     {
                         throw new Exception("Email đã tồn tại");
                     }
-                    if (ex.InnerException.Message.Contains("Phone"))
+                    if (ex.InnerException.Message.Contains("phone"))
                     {
                         throw new Exception("Số điện thoại đã tồn tại");
                     }

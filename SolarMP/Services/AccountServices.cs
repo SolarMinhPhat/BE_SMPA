@@ -95,7 +95,7 @@ namespace SolarMP.Services
             {
                 var account = new Account();
                 account.AccountId = "ACC"+Guid.NewGuid().ToString().Substring(0,13);
-                account.RoleId = "4" ?? dto.RoleId;
+                account.RoleId = dto.RoleId ?? "4";
                 account.Phone = dto.Phone;
                 account.Email = dto.Email;
                 account.Username = dto.Username;

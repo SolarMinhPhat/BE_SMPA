@@ -60,7 +60,7 @@ namespace SolarMP.Controllers
                     // tách hóa đơn ra để thêm vào db
                     string taxVNPay = DateTime.Now.Ticks.ToString();
                     pay.AddRequestData("vnp_TxnRef", taxVNPay); //mã hóa đơn
-                    pay.AddRequestData("vnp_ExpireDate", DateTime.Now.AddHours(8).ToString("yyyyMMddHHmmss")); //Thời gian kết thúc thanh toán
+                    pay.AddRequestData("vnp_ExpireDate", DateTime.Now.AddHours(1).ToString("yyyyMMddHHmmss")); //Thời gian kết thúc thanh toán
                     string paymentUrl = pay.CreateRequestUrl(url, hashSecret);
 
                     // update db

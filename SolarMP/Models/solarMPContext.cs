@@ -40,7 +40,7 @@ namespace SolarMP.Models
             if (!optionsBuilder.IsConfigured)
             {
                 // server
-                optionsBuilder.UseSqlServer("Data Source=solarcapstone.database.windows.net;Initial Catalog=solarMP;Persist Security Info=True;User ID=SMPAK141007;Password=S@lar123456789");
+                optionsBuilder.UseSqlServer("Data Source=solarcaps.database.windows.net;Initial Catalog=solarMP;Persist Security Info=True;User ID=solar;Password=S@lar123456789");
                 // local
                 //optionsBuilder.UseSqlServer("Data Source=LAPTOP-8LC85HGU\\SQLEXPRESS;Initial Catalog=solarMP;Persist Security Info=True;User ID=sa;Password=12");
             }

@@ -141,12 +141,15 @@ namespace SolarMP.Services
                 var check = await this.context.Account.Where(x => x.AccountId.Equals(dto.AccountId)).FirstOrDefaultAsync();
                 if (check != null)
                 {
-                    check.Address = dto.Address;
-                    check.Gender = dto.Gender;
-                    check.Firstname= dto.Firstname;
-                    check.Lastname= dto.Lastname;
-                    check.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-                    check.IsGoogleProvider = dto.IsGoogleProvider;
+                    check.Address = dto.Address ?? check.Address;
+                    check.Gender = dto.Gender ?? check.Gender;
+                    check.Firstname= dto.Firstname ?? check.Firstname;
+                    check.Lastname= dto.Lastname ?? check.Lastname;
+                    if(dto.Password!= null)
+                    {
+                        check.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+                    }         
+                    check.IsGoogleProvider = dto.IsGoogleProvider ?? check.IsGoogleProvider;
                     check.Status = (bool)dto.Status;
                     this.context.Account.Update(check);
                     this.context.SaveChangesAsync();

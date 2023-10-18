@@ -12,6 +12,7 @@ namespace SolarMP.DTOs.Account
         public string Lastname { get; set; }
         public string Address { get; set; }
         public bool Gender { get; set; }
+        public bool? Status { get; set; }
         public bool IsGoogleProvider { get; set; } = false;
     }
 }

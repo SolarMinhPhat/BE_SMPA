@@ -147,6 +147,7 @@ namespace SolarMP.Services
                     check.Lastname= dto.Lastname;
                     check.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
                     check.IsGoogleProvider = dto.IsGoogleProvider;
+                    check.Status = (bool)dto.Status;
                     this.context.Account.Update(check);
                     this.context.SaveChangesAsync();
                     return check;

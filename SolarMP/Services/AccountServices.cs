@@ -36,6 +36,32 @@ namespace SolarMP.Services
             }
         }
 
+        public async Task<Account> deleteHardCode(string id)
+        {
+            try
+            {
+                var check = await this.context.Account.Where(x => x.AccountId.Equals(id)).FirstOrDefaultAsync();
+                if (check != null)
+                {
+                    this.context.Account.RemoveRange(check);
+                    await this.context.SaveChangesAsync();
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    throw new Exception("data còn ở các bảng khác nên không xóa được đâu!");
+                }
+                throw new Exception("Lỗi gòi");
+            }
+        }
+
         public async Task<List<Account>> getAll()
         {
             try

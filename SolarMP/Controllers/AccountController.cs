@@ -136,5 +136,21 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+        [Route("delete-Account-hard")]
+        [HttpDelete]
+        public async Task<IActionResult> deleteHard(string dto)
+        {
+            ResponseAPI<List<Account>> responseAPI = new ResponseAPI<List<Account>>();
+            try
+            {
+                responseAPI.Data = await this._service.deleteHardCode(dto);
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
     }
 }

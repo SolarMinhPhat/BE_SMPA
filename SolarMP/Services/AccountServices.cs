@@ -2,15 +2,18 @@
 using SolarMP.DTOs.Account;
 using SolarMP.Interfaces;
 using SolarMP.Models;
+using Twilio.Types;
 
 namespace SolarMP.Services
 {
     public class AccountServices : IAccount
     {
         protected readonly solarMPContext context;
-        public AccountServices(solarMPContext context)
+        private readonly ITwilio twilio;
+        public AccountServices(solarMPContext context, ITwilio twilio)
         {
             this.context = context;
+            this.twilio = twilio;
         }
 
         public async Task<Account> delete(string id)
@@ -43,7 +46,7 @@ namespace SolarMP.Services
                 var check = await this.context.Account.Where(x => x.AccountId.Equals(id)).FirstOrDefaultAsync();
                 if (check != null)
                 {
-                    this.context.Account.RemoveRange(check);
+                    this.context.Account.Remove(check);
                     await this.context.SaveChangesAsync();
                     return check;
                 }
@@ -134,6 +137,19 @@ namespace SolarMP.Services
                 account.CreateAt = DateTime.Now;
                 account.IsGoogleProvider = dto.IsGoogleProvider;
 
+                string digitsOnly = new string(dto.Phone.Where(char.IsDigit).ToArray());
+
+                if (!digitsOnly.StartsWith("+84"))
+                {
+                    digitsOnly = "+84" + digitsOnly;
+                }
+
+                if (account.RoleId == "4")
+                {
+                    account.RoleId = "4";
+                    account.Status = false;
+                    twilio.SendOTP(digitsOnly);
+                }
                 await this.context.Account.AddAsync(account);
                 await this.context.SaveChangesAsync();
                 

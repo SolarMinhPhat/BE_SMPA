@@ -31,7 +31,8 @@ builder.Services.AddScoped<IConstructionContract, ConstructionContractServices>(
 builder.Services.AddScoped<IWarrantyReport, WarrantyServices>();
 builder.Services.AddScoped<IPayment, PaymentServices>();
 builder.Services.AddScoped<IRequest, RequestServices>();
-builder.Services.AddScoped<ITwilio, TwilioServices>();
+builder.Services.AddScoped<ITwilio, TwilioServices>(); 
+builder.Services.AddScoped<IFeedback, FeedbackServices>();
 
 
 

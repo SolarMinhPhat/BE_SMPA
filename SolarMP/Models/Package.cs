@@ -13,6 +13,7 @@ namespace SolarMP.Models
         public Package()
         {
             ConstructionContract = new HashSet<ConstructionContract>();
+            Feedback = new HashSet<Feedback>();
             PackageProduct = new HashSet<PackageProduct>();
             Request = new HashSet<Request>();
         }
@@ -42,6 +43,8 @@ namespace SolarMP.Models
         public virtual Promotion Promotion { get; set; }
         [InverseProperty("Package")]
         public virtual ICollection<ConstructionContract> ConstructionContract { get; set; }
+        [InverseProperty("Package")]
+        public virtual ICollection<Feedback> Feedback { get; set; }
         [InverseProperty("Package")]
         public virtual ICollection<PackageProduct> PackageProduct { get; set; }
         [InverseProperty("Package")]

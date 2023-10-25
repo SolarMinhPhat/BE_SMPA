@@ -22,6 +22,7 @@ namespace SolarMP.Models
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<Bracket> Bracket { get; set; }
         public virtual DbSet<ConstructionContract> ConstructionContract { get; set; }
+        public virtual DbSet<Feedback> Feedback { get; set; }
         public virtual DbSet<Image> Image { get; set; }
         public virtual DbSet<Package> Package { get; set; }
         public virtual DbSet<PackageProduct> PackageProduct { get; set; }
@@ -39,8 +40,7 @@ namespace SolarMP.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                // server
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=solar123.database.windows.net;Initial Catalog=solarMP;Persist Security Info=True;User ID=solar;Password=Quyen123@");
             }
         }
@@ -97,6 +97,27 @@ namespace SolarMP.Models
                     .WithMany(p => p.ConstructionContractStaff)
                     .HasForeignKey(d => d.Staffid)
                     .HasConstraintName("FK_ConstructionContract_Account");
+            });
+
+            modelBuilder.Entity<Feedback>(entity =>
+            {
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Feedback)
+                    .HasForeignKey(d => d.AccountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Feedback_Account");
+
+                entity.HasOne(d => d.ContructionContract)
+                    .WithMany(p => p.Feedback)
+                    .HasForeignKey(d => d.ContructionContractId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Feedback_ConstructionContract");
+
+                entity.HasOne(d => d.Package)
+                    .WithMany(p => p.Feedback)
+                    .HasForeignKey(d => d.PackageId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Feedback_Package");
             });
 
             modelBuilder.Entity<Image>(entity =>

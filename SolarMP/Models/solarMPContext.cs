@@ -39,10 +39,9 @@ namespace SolarMP.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+
                 // server
-                optionsBuilder.UseSqlServer("Data Source=solarcaps.database.windows.net;Initial Catalog=solarMP;Persist Security Info=True;User ID=solar;Password=S@lar123456789");
-                // local
-                //optionsBuilder.UseSqlServer("Data Source=LAPTOP-8LC85HGU\\SQLEXPRESS;Initial Catalog=solarMP;Persist Security Info=True;User ID=sa;Password=12");
+                optionsBuilder.UseSqlServer("Data Source=solar123.database.windows.net;Initial Catalog=solarMP;Persist Security Info=True;User ID=solar;Password=Quyen123@");
             }
         }
 
@@ -53,7 +52,7 @@ namespace SolarMP.Models
                 entity.HasOne(d => d.ConstructionContract)
                     .WithMany(p => p.Acceptance)
                     .HasForeignKey(d => d.ConstructionContractId)
-                    .HasConstraintName("FK__Acceptanc__const__5165187F");
+                    .HasConstraintName("FK_Acceptance_ConstructionContract");
             });
 
             modelBuilder.Entity<Account>(entity =>

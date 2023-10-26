@@ -19,7 +19,7 @@ namespace SolarMP.Models
         public bool? Status { get; set; }
         [Column("rating")]
         public int? Rating { get; set; }
-        [Column("feedback", TypeName = "text")]
+        [Column("feedback")]
         public string Feedback { get; set; }
         [Column("constructionContractId")]
         [StringLength(16)]

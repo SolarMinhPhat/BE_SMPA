@@ -41,6 +41,7 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+        [Authorize(Roles = "1")]
         [Route("get-name")]
         [HttpGet]
         public async Task<IActionResult> getName(string name)
@@ -57,7 +58,7 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
-
+        [Authorize(Roles = "1")]
         [Route("get-id")]
         [HttpGet]
         public async Task<IActionResult> getId(string id)
@@ -103,6 +104,8 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+
+        [AllowAnonymous]
         [Route("update-Account")]
         [HttpPut]
         public async Task<IActionResult> update(AccountUpdateDTO dto)
@@ -120,6 +123,7 @@ namespace SolarMP.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [Route("delete-Account")]
         [HttpDelete]
         public async Task<IActionResult> delete(string dto)

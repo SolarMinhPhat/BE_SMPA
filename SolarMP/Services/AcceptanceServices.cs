@@ -73,7 +73,7 @@ namespace SolarMP.Services
             try
             {
                 var _acceptance = new Acceptance();
-                _acceptance.AcceptanceId = "Acc" + Guid.NewGuid().ToString().Substring(0, 7);
+                _acceptance.AcceptanceId = "ACPT" + Guid.NewGuid().ToString().Substring(0, 12);
                 _acceptance.Rating = acceptance.Rating;
                 _acceptance.Feedback = acceptance.Feedback;
                 _acceptance.ConstructionContractId = acceptance.ConstructionContractId;
@@ -89,17 +89,17 @@ namespace SolarMP.Services
             }
         }
 
-        public async Task<bool> UpdateAcceptance(AcceptanceDTO upAcceptance)
+        public async Task<bool> UpdateAcceptance(AcceptanceUpdateDTO upAcceptance)
         {
             try
             {
                 Acceptance _acceptance = await this.context.Acceptance.FirstAsync(x => x.AcceptanceId == upAcceptance.AcceptanceId);
                 if (_acceptance != null)
                 {
-                    _acceptance.Rating = upAcceptance.Rating;
-                    _acceptance.Feedback = upAcceptance.Feedback;
-                    _acceptance.ImageFile = upAcceptance.ImageFile;
-                    _acceptance.Status = true;
+                    _acceptance.Rating = upAcceptance.Rating ?? _acceptance.Rating;
+                    _acceptance.Feedback = upAcceptance.Feedback ?? _acceptance.Feedback;
+                    _acceptance.ImageFile = upAcceptance.ImageFile ?? _acceptance.ImageFile;
+                    _acceptance.Status = upAcceptance.Status ?? _acceptance.Status;
                      context.Acceptance.Update(_acceptance);
                     this.context.SaveChanges();
                     return true;

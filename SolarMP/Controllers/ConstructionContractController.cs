@@ -50,7 +50,7 @@ namespace SolarMP.Controllers
         }
         [Route("Update-construction-contract-with-id")]
         [HttpPut]
-        public async Task<IActionResult> UpdateConstructionContract(ConstructionContractDTO upConstructionContract)
+        public async Task<IActionResult> UpdateConstructionContract(ConstructionContractUpdateDTO upConstructionContract)
         {
             ResponseAPI<List<ConstructionContract>> responseAPI = new ResponseAPI<List<ConstructionContract>>();
             try

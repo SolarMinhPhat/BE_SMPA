@@ -39,7 +39,10 @@ namespace SolarMP.Services
         {
             try
             {
-                var check = await this.context.Request.ToListAsync();
+                var check = await this.context.Request
+                    .Include(x=>x.Staff)
+                    .Include(x=>x.Account)
+                    .ToListAsync();
                 if (check != null)
                 {
                     return check;
@@ -58,7 +61,35 @@ namespace SolarMP.Services
         {
             try
             {
-                var check = await this.context.Request.Where(x => x.PackageId.Equals(id)).ToListAsync();
+                var check = await this.context.Request.Where(x => x.PackageId.Equals(id))
+                    .Include(x => x.Staff)
+                    .Include(x => x.Account)
+                    .Include(x => x.Package)
+                    .ToListAsync();
+                if (check != null)
+                {
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<Request>> getAllForStaff(string id)
+        {
+            try
+            {
+                var check = await this.context.Request.Where(x => x.StaffId.Equals(id))
+                    .Include(x => x.Staff)
+                    .Include(x => x.Account)
+                    .Include(x=>x.Package)
+                    .ToListAsync();
                 if (check != null)
                 {
                     return check;
@@ -78,7 +109,10 @@ namespace SolarMP.Services
         {
             try
             {
-                var check = await this.context.Request.Where(x => x.AccountId.Equals(id)).ToListAsync();
+                var check = await this.context.Request.Where(x => x.AccountId.Equals(id))
+                    .Include(x => x.Staff)
+                    .Include(x => x.Package)
+                    .ToListAsync();
                 if (check != null)
                 {
                     return check;

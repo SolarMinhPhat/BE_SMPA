@@ -60,7 +60,7 @@ namespace SolarMP.Controllers
         /// <returns></returns>
         [Route("Update-promotion-by-id")]
         [HttpPut]
-        public async Task<IActionResult> UpdatePromotion(PromotionDTO upPromotion)
+        public async Task<IActionResult> UpdatePromotion(PromotionUpdateDTO upPromotion)
         {
             ResponseAPI<List<Promotion>> responseAPI = new ResponseAPI<List<Promotion>>();
             try

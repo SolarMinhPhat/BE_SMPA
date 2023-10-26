@@ -8,7 +8,7 @@ namespace SolarMP.Interfaces
     {
         Task<List<Bracket>> GetBracketById(string? bracketId);
         Task<List<Bracket>> GetAllBrackets();
-        Task<bool> UpdateBracket(BracketDTO upBracket);
+        Task<bool> UpdateBracket(BracketUpdateDTO upBracket);
         Task<bool> DeleteBracket(string bracketId);
         Task<Bracket> InsertBracket(BracketDTO bracket);
     }

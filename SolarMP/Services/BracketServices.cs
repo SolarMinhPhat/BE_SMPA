@@ -74,11 +74,11 @@ namespace SolarMP.Services
             try
             {
                 var _bracket = new Bracket();
-                _bracket.BracketId = "BKT" + Guid.NewGuid().ToString().Substring(0, 7);
+                _bracket.BracketId = "BKT" + Guid.NewGuid().ToString().Substring(0, 13);
                 _bracket.Name= bracket.Name;
                 _bracket.Price = bracket.Price;
                 _bracket.Manufacturer= bracket.Manufacturer;
-                _bracket.Status = bracket.Status;
+                _bracket.Status = true;
                 await this.context.Bracket.AddAsync(_bracket);
                 this.context.SaveChanges();
 
@@ -105,17 +105,17 @@ namespace SolarMP.Services
             }
         }
 
-        public async Task<bool> UpdateBracket(BracketDTO upBracket)
+        public async Task<bool> UpdateBracket(BracketUpdateDTO upBracket)
         {
             try
             {
                 Bracket _bracket = await this.context.Bracket.FirstAsync(x => x.BracketId == upBracket.BracketId);
                 if (_bracket != null)
                 {
-                    _bracket.Name = upBracket.Name;
-                    _bracket.Price = upBracket.Price;
-                    _bracket.Manufacturer = upBracket.Manufacturer;
-                    _bracket.Status = upBracket.Status;
+                    _bracket.Name = upBracket.Name ?? _bracket.Name;
+                    _bracket.Price = upBracket.Price ?? _bracket.Price;
+                    _bracket.Manufacturer = upBracket.Manufacturer ?? _bracket.Manufacturer;
+                    _bracket.Status = upBracket.Status ?? _bracket.Status;
                     context.Bracket.Update(_bracket);
                     this.context.SaveChanges();
                     return true;

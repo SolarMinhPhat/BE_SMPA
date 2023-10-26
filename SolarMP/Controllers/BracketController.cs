@@ -60,7 +60,7 @@ namespace SolarMP.Controllers
         /// <returns></returns>
         [Route("Update-bracket-by-id")]
         [HttpPut]
-        public async Task<IActionResult> UpdateBracket(BracketDTO upBracket)
+        public async Task<IActionResult> UpdateBracket(BracketUpdateDTO upBracket)
         {
             ResponseAPI<List<Bracket>> responseAPI = new ResponseAPI<List<Bracket>>();
             try

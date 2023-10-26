@@ -60,7 +60,7 @@ namespace SolarMP.Controllers
         /// <returns></returns>
         [Route("Update-survey-by-id")]
         [HttpPut]
-        public async Task<IActionResult> UpdateSurvey(SurveyDTO upSurvey)
+        public async Task<IActionResult> UpdateSurvey(SurveyUpdateDTO upSurvey)
         {
             ResponseAPI<List<Survey>> responseAPI = new ResponseAPI<List<Survey>>();
             try

@@ -16,7 +16,8 @@ namespace SolarMP.Models
             ConstructionContractStaff = new HashSet<ConstructionContract>();
             Feedback = new HashSet<Feedback>();
             PaymentProcess = new HashSet<PaymentProcess>();
-            Request = new HashSet<Request>();
+            RequestAccount = new HashSet<Request>();
+            RequestStaff = new HashSet<Request>();
             Survey = new HashSet<Survey>();
             WarrantyReport = new HashSet<WarrantyReport>();
         }
@@ -75,7 +76,9 @@ namespace SolarMP.Models
         [InverseProperty("Account")]
         public virtual ICollection<PaymentProcess> PaymentProcess { get; set; }
         [InverseProperty("Account")]
-        public virtual ICollection<Request> Request { get; set; }
+        public virtual ICollection<Request> RequestAccount { get; set; }
+        [InverseProperty("Staff")]
+        public virtual ICollection<Request> RequestStaff { get; set; }
         [InverseProperty("Staff")]
         public virtual ICollection<Survey> Survey { get; set; }
         [InverseProperty("Account")]

@@ -38,10 +38,13 @@ namespace SolarMP.Models
         public string StaffId { get; set; }
 
         [ForeignKey("AccountId")]
-        [InverseProperty("Request")]
+        [InverseProperty("RequestAccount")]
         public virtual Account Account { get; set; }
         [ForeignKey("PackageId")]
         [InverseProperty("Request")]
         public virtual Package Package { get; set; }
+        [ForeignKey("StaffId")]
+        [InverseProperty("RequestStaff")]
+        public virtual Account Staff { get; set; }
     }
 }

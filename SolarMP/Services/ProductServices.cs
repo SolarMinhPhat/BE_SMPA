@@ -160,12 +160,12 @@ namespace SolarMP.Services
                 if (check != null)
                 {
                     var temp = check.Price;
-                    check.Name = dto.Name;
-                    check.Price = dto.Price;
-                    check.Feature = dto.Feature;
-                    check.Manufacturer = dto.Manufacturer;
-                    check.WarrantyDate= dto.WarrantyDate;
-                    check.Status = dto.Status;
+                    check.Name = dto.Name ?? check.Name;
+                    check.Price = dto.Price ?? check.Price;
+                    check.Feature = dto.Feature ?? check.Feature;
+                    check.Manufacturer = dto.Manufacturer ?? check.Manufacturer;
+                    check.WarrantyDate= dto.WarrantyDate ?? check.WarrantyDate;
+                    check.Status = dto.Status ?? check.Status;
                     
                     this.context.Product.Update(check);
                     await this.context.SaveChangesAsync();
@@ -175,6 +175,10 @@ namespace SolarMP.Services
                     {
                         foreach(var p in pckPro)
                         {
+                            if(temp == check.Price)
+                            {
+                                break;
+                            }
                             var pck = await this.context.Package.Where(x=>x.PackageId.Equals(p.PackageId)).FirstOrDefaultAsync();
                             pck.Price -= temp * p.Quantity;
                             pck.Price += dto.Price * p.Quantity;

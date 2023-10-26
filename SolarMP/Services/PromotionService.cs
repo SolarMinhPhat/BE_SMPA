@@ -71,14 +71,14 @@ namespace SolarMP.Services
             try
             {
                 var _promotion = new Promotion();
-                _promotion.PromotionId = "PROMO" + Guid.NewGuid().ToString().Substring(0, 6);
+                _promotion.PromotionId = "PROMO" + Guid.NewGuid().ToString().Substring(0, 11);
                 _promotion.Amount= promotion.Amount;
                 _promotion.Title = promotion.Title;
                 _promotion.Description = promotion.Description;
                 _promotion.StartDate = promotion.StartDate;
                 _promotion.EndDate = promotion.EndDate;
-                _promotion.CreateAt= promotion.CreateAt;
-                _promotion.Status = promotion.Status;
+                _promotion.CreateAt= DateTime.Now;
+                _promotion.Status = true;
                 await this.context.Promotion.AddAsync(_promotion);
                 this.context.SaveChanges();
                 return true;
@@ -89,20 +89,19 @@ namespace SolarMP.Services
             }
         }
 
-        public async Task<bool> UpdatePromotion(PromotionDTO upPromotion)
+        public async Task<bool> UpdatePromotion(PromotionUpdateDTO upPromotion)
         {
             try
             {
                 Promotion promotion = await this.context.Promotion.FirstAsync(x => x.PromotionId == upPromotion.PromotionId);
                 if (promotion != null)
                 {
-                    promotion.Amount = upPromotion.Amount;
-                    promotion.Title = upPromotion.Title;
-                    promotion.Description = upPromotion.Description;
-                    promotion.StartDate = upPromotion.StartDate;
-                    promotion.EndDate = upPromotion.EndDate;
-                    promotion.CreateAt = upPromotion.CreateAt;
-                    promotion.Status = upPromotion.Status;
+                    promotion.Amount = upPromotion.Amount ?? promotion.Amount;
+                    promotion.Title = upPromotion.Title ?? promotion.Title ;
+                    promotion.Description = upPromotion.Description ?? promotion.Description;
+                    promotion.StartDate = upPromotion.StartDate ?? promotion.StartDate;
+                    promotion.EndDate = upPromotion.EndDate ?? promotion.EndDate;
+                    promotion.Status = upPromotion.Status ?? promotion.Status;
                     context.Promotion.Update(promotion);
                     this.context.SaveChanges();
                     return true;

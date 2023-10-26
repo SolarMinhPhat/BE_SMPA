@@ -214,7 +214,7 @@ namespace SolarMP.Models
             modelBuilder.Entity<Request>(entity =>
             {
                 entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Request)
+                    .WithMany(p => p.RequestAccount)
                     .HasForeignKey(d => d.AccountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Request_Account");
@@ -224,6 +224,11 @@ namespace SolarMP.Models
                     .HasForeignKey(d => d.PackageId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Request_Package");
+
+                entity.HasOne(d => d.Staff)
+                    .WithMany(p => p.RequestStaff)
+                    .HasForeignKey(d => d.StaffId)
+                    .HasConstraintName("FK_Request_Account1");
             });
 
             modelBuilder.Entity<Survey>(entity =>

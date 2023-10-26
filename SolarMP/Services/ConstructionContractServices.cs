@@ -71,7 +71,7 @@ namespace SolarMP.Services
             try
             {
                 var _constructionContract = new ConstructionContract();
-                _constructionContract.ConstructioncontractId = "CON" + Guid.NewGuid().ToString().Substring(0, 7);
+                _constructionContract.ConstructioncontractId = "CON" + Guid.NewGuid().ToString().Substring(0, 13);
                 _constructionContract.Startdate = constructionContract.Startdate;
                 _constructionContract.Enddate = constructionContract.Enddate;
                 _constructionContract.Totalcost = constructionContract.Totalcost;
@@ -92,23 +92,23 @@ namespace SolarMP.Services
             }
         }
 
-        public async Task<bool> UpdateConstructionContract(ConstructionContractDTO upConstructionContract)
+        public async Task<bool> UpdateConstructionContract(ConstructionContractUpdateDTO upConstructionContract)
         {
             try
             {
                 ConstructionContract _constructionContract = await this.context.ConstructionContract.FirstAsync(x => x.ConstructioncontractId == upConstructionContract.ConstructioncontractId);
                 if (_constructionContract != null)
                 {
-                    _constructionContract.Startdate = upConstructionContract.Startdate;
-                    _constructionContract.Enddate = upConstructionContract.Enddate;
-                    _constructionContract.Totalcost = upConstructionContract.Totalcost;
-                    _constructionContract.IsConfirmed = upConstructionContract.IsConfirmed;
-                    _constructionContract.ImageFile = upConstructionContract.ImageFile;
-                    _constructionContract.CustomerId = upConstructionContract.CustomerId;
-                    _constructionContract.Staffid = upConstructionContract.Staffid;
-                    _constructionContract.PackageId = upConstructionContract.PackageId;
-                    _constructionContract.BracketId = upConstructionContract.BracketId;
-                    _constructionContract.Status = true;
+                    _constructionContract.Startdate = upConstructionContract.Startdate ?? _constructionContract.Startdate;
+                    _constructionContract.Enddate = upConstructionContract.Enddate ?? _constructionContract.Enddate;
+                    _constructionContract.Totalcost = upConstructionContract.Totalcost ?? _constructionContract.Totalcost;
+                    _constructionContract.IsConfirmed = upConstructionContract.IsConfirmed ?? _constructionContract.IsConfirmed;
+                    _constructionContract.ImageFile = upConstructionContract.ImageFile ?? _constructionContract.ImageFile;
+                    _constructionContract.CustomerId = upConstructionContract.CustomerId ?? _constructionContract.CustomerId;
+                    _constructionContract.Staffid = upConstructionContract.Staffid ?? _constructionContract.Staffid;
+                    _constructionContract.PackageId = upConstructionContract.PackageId ?? _constructionContract.PackageId;
+                    _constructionContract.BracketId = upConstructionContract.BracketId ?? _constructionContract.BracketId;
+                    _constructionContract.Status = upConstructionContract.Status ?? _constructionContract.Status;
                     context.ConstructionContract.Update(_constructionContract);
                     this.context.SaveChanges();
                     return true;

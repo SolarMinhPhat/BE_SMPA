@@ -60,7 +60,7 @@ namespace SolarMP.Controllers
         /// <returns></returns>
         [Route("Update-acceptance-by-id")]
         [HttpPut]
-        public async Task<IActionResult> UpdateAcceptance(AcceptanceDTO upAcceptance)
+        public async Task<IActionResult> UpdateAcceptance(AcceptanceUpdateDTO upAcceptance)
         {
             ResponseAPI<List<Acceptance>> responseAPI = new ResponseAPI<List<Acceptance>>();
             try

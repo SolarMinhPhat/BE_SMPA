@@ -7,8 +7,6 @@ namespace SolarMP.DTOs.ConstructionContract
 {
     public class ConstructionContractDTO
     {
-        public string ConstructioncontractId { get; set; }
-        public bool? Status { get; set; }
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
         public decimal? Totalcost { get; set; }

@@ -8,7 +8,6 @@ namespace SolarMP.DTOs.Acceptances
 {
     public class AcceptanceDTO
     {
-        public string? AcceptanceId { get; set; }  
         public int? Rating { get; set; }
         public string? Feedback { get; set; }
         public string? ConstructionContractId { get; set; }

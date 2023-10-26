@@ -23,16 +23,12 @@ namespace SolarMP.Models
         [Unicode(false)]
         public string ProductId { get; set; }
         [Column("name")]
-        [StringLength(255)]
-        [Unicode(false)]
         public string Name { get; set; }
         [Column("price", TypeName = "decimal(16, 0)")]
         public decimal? Price { get; set; }
         [Column("manufacturer")]
-        [StringLength(100)]
-        [Unicode(false)]
         public string Manufacturer { get; set; }
-        [Column("feature", TypeName = "text")]
+        [Column("feature")]
         public string Feature { get; set; }
         [Column("warrantyDate", TypeName = "date")]
         public DateTime? WarrantyDate { get; set; }

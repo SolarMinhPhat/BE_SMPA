@@ -22,14 +22,10 @@ namespace SolarMP.Models
         [Unicode(false)]
         public string BracketId { get; set; }
         [Column("name")]
-        [StringLength(255)]
-        [Unicode(false)]
         public string Name { get; set; }
         [Column("price", TypeName = "decimal(16, 0)")]
         public decimal? Price { get; set; }
         [Column("manufacturer")]
-        [StringLength(100)]
-        [Unicode(false)]
         public string Manufacturer { get; set; }
         [Column("status")]
         public bool Status { get; set; }

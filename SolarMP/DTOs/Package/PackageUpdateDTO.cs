@@ -12,5 +12,6 @@ namespace SolarMP.DTOs.Package
         public string? Description { get; set; }
         public string? PromotionId { get; set; }
         public bool? Status { get; set; }
+        public bool? IsDisablePromotion { get; set; } = false;
     }
 }

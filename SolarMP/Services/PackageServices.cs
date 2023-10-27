@@ -177,6 +177,10 @@ namespace SolarMP.Services
                     check.Name = dto.Name ?? check.Name;
                     check.Description = dto.Description ?? check.Description;
                     check.PromotionId = dto.PromotionId ?? check.PromotionId;
+                    if(dto.IsDisablePromotion == true)
+                    {
+                        check.Promotion = null;
+                    }
                     this.context.Package.Update(check);
                     await this.context.SaveChangesAsync();
 

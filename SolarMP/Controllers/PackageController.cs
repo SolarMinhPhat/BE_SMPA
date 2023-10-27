@@ -126,6 +126,24 @@ namespace SolarMP.Controllers
         }
 
         [Authorize(Roles = "1, 2")]
+        [Route("update-Package")]
+        [HttpPut]
+        public async Task<IActionResult> delete(PackageUpdateDTO dto)
+        {
+            ResponseAPI<List<Package>> responseAPI = new ResponseAPI<List<Package>>();
+            try
+            {
+                responseAPI.Data = await this.service.update(dto);
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
+
+        [Authorize(Roles = "1, 2")]
         [Route("delete-Package")]
         [HttpDelete]
         public async Task<IActionResult> delete(string dto)

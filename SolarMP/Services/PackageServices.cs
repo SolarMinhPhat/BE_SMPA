@@ -122,6 +122,7 @@ namespace SolarMP.Services
             {
                 var package = new Package();
                 package.Status = true;
+                package.PromotionId = dto.PromotionId ?? null;
                 package.Name = dto.Name;
                 package.Price = 0;
                 package.Description = dto.Description;
@@ -159,6 +160,32 @@ namespace SolarMP.Services
                     await this.context.SaveChangesAsync();
                 }
                 return true;
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<Package> update(PackageUpdateDTO dto)
+        {
+            try
+            {
+                var check = await this.context.Package.Where(x => x.PackageId.Equals(dto.PackageId)).FirstOrDefaultAsync();
+                if (check != null)
+                {
+                    check.Status = dto.Status ?? check.Status;
+                    check.Name = dto.Name ?? check.Name;
+                    check.Description = dto.Description ?? check.Description;
+                    check.PromotionId = dto.PromotionId ?? check.PromotionId;
+                    this.context.Package.Update(check);
+                    await this.context.SaveChangesAsync();
+
+                    return check;
+                }
+                else
+                {
+                    throw new Exception("không tìm thấy");
+                }
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);

@@ -12,5 +12,6 @@ namespace SolarMP.Interfaces
         Task<List<Package>> getByName(string name);
         Task<Package> getById(string id);
         Task<bool> insertProduct(PackageProductCreateDTO dto);
+        Task<Package> update(PackageUpdateDTO dto);
     }
 }

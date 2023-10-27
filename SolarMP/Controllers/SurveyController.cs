@@ -53,6 +53,22 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+        [Route("get-servey-staffid")]
+        [HttpGet]
+        public async Task<IActionResult> GetSurveyBystaffId(string staffId)
+        {
+            ResponseAPI<List<Survey>> responseAPI = new ResponseAPI<List<Survey>>();
+            try
+            {
+                responseAPI.Data = await this.service.GetSurveyByIdstaff(staffId);
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
         /// <summary>
         /// Update surveyid
         /// </summary>

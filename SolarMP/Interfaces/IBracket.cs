@@ -11,5 +11,6 @@ namespace SolarMP.Interfaces
         Task<bool> UpdateBracket(BracketUpdateDTO upBracket);
         Task<bool> DeleteBracket(string bracketId);
         Task<Bracket> InsertBracket(BracketDTO bracket);
+        Task<List<Bracket>> GetAllBracketsAdmin();
     }
 }

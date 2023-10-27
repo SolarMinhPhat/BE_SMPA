@@ -68,6 +68,20 @@ namespace SolarMP.Services
             }
         }
 
+        public async Task<List<Acceptance>> GetAllAcceptancesAD()
+        {
+            try
+            {
+                var data = await this.context.Acceptance
+                    .ToListAsync();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
         public async Task<bool> InsertAcceptance(AcceptanceDTO acceptance)
         {
             try

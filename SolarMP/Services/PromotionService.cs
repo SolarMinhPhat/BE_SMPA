@@ -41,7 +41,7 @@ namespace SolarMP.Services
         {
             try
             {
-                var data = await this.context.Promotion.Where(x => x.Status)
+                var data = await this.context.Promotion
                     .ToListAsync();
                 return data;
             }

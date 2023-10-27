@@ -50,6 +50,22 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+        [Route("get-request-staff")]
+        [HttpGet]
+        public async Task<IActionResult> getRequestforStaff(string StaffId)
+        {
+            ResponseAPI<List<Request>> responseAPI = new ResponseAPI<List<Request>>();
+            try
+            {
+                responseAPI.Data = await this.service.getAllForStaff(StaffId);
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
         [Route("get-request-package")]
         [HttpGet]
         public async Task<IActionResult> getPCK(string pckId)

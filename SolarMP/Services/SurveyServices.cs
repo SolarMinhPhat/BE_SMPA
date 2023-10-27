@@ -69,6 +69,23 @@ namespace SolarMP.Services
             }
         }
 
+        public async Task<List<Survey>> GetSurveyByIdstaff(string surveyId)
+        {
+            try
+            {
+                var data = await this.context.Survey.Where(x => x.Status && x.StaffId.Equals(surveyId))
+                    .Include(x => x.Staff)
+                    .ToListAsync();
+                if (data.Count > 0 && data != null)
+                    return data;
+                else throw new ArgumentException();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Process went wrong");
+            }
+        }
+
         public async Task<bool> InsertSurvey(SurveyDTO survey)
         {
             try

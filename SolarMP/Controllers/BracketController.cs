@@ -32,6 +32,22 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+        [Route("get-all-bracket-admin")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllBracketsAdmin()
+        {
+            ResponseAPI<List<Bracket>> responseAPI = new ResponseAPI<List<Bracket>>();
+            try
+            {
+                responseAPI.Data = await this.service.GetAllBracketsAdmin();
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
         /// <summary>
         /// get Bracket with id 
         /// </summary>

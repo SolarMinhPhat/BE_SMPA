@@ -51,6 +51,20 @@ namespace SolarMP.Services
                 throw new Exception();
             }
         }
+        public async Task<List<Bracket>> GetAllBracketsAdmin()
+        {
+            try
+            {
+                var data = await this.context.Bracket
+                    .Include(x => x.Image)
+                    .ToListAsync();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
 
         public async Task<List<Bracket>> GetBracketById(string? bracketId)
         {

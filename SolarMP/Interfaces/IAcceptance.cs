@@ -11,5 +11,6 @@ namespace SolarMP.Interfaces
         Task<bool> UpdateAcceptance(AcceptanceUpdateDTO upAcceptance);
         Task<bool> DeleteAcceptance(string acceptanceId);
         Task<bool> InsertAcceptance(AcceptanceDTO acceptance);
+        Task<List<Acceptance>> GetAllAcceptancesAD();
     }
 }

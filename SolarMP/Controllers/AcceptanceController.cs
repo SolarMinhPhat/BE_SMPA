@@ -32,6 +32,22 @@ namespace SolarMP.Controllers
                 return BadRequest(responseAPI);
             }
         }
+        [Route("get-all-Acceptance-admin")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllAcceptancesad()
+        {
+            ResponseAPI<List<Acceptance>> responseAPI = new ResponseAPI<List<Acceptance>>();
+            try
+            {
+                responseAPI.Data = await this.service.GetAllAcceptancesAD();
+                return Ok(responseAPI);
+            }
+            catch (Exception ex)
+            {
+                responseAPI.Message = ex.Message;
+                return BadRequest(responseAPI);
+            }
+        }
         /// <summary>
         /// Get acceptance by id
         /// </summary>
